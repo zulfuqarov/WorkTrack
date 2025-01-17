@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EmployeeDetails from "./EmployeeDetails";
 
 const EmployeeList = () => {
   const [selectedEmployee, setSelectedEmployee] = useState(null);
-
+  const [isMenuOpen, setisMenuOpen] = useState(null);
   const filteredEmployees = [
     {
       employeeID: "EMP001",
@@ -202,6 +202,9 @@ const EmployeeList = () => {
         return "bg-gray-100 text-gray-800"; // Varsayılan renk
     }
   };
+  useEffect(() => {
+    console.log("isMenuOpen güncellendi:", isMenuOpen);
+  }, [isMenuOpen]);
 
   return (
     <div className="overflow-x-auto bg-gray-100 p-6 text-[14px] ">
@@ -242,7 +245,7 @@ const EmployeeList = () => {
         </thead>
         <tbody>
           {filteredEmployees.map((employee) => (
-            <tr key={employee.id} className="border-t">
+            <tr key={employee.employeeID} className="border-t">
               <td className="px-4 py-3">
                 <img
                   src={employee.photo}
@@ -281,13 +284,40 @@ const EmployeeList = () => {
                 </span>
               </td>
               {/* <td className="px-4 py-3">{employee.homeCountryAddress}</td> */}
-              <td className="px-4 py-3">
-                <button
-                  onClick={() => setSelectedEmployee(employee)}
-                  className="text-blue-600 hover:text-blue-800"
-                >
-                  View Details
-                </button>
+              <td className="px-4 py-3 relative">
+                <div className="relative inline-block text-left">
+                  <button
+                    onClick={() => {
+                      setisMenuOpen(
+                        isMenuOpen === employee.employeeID
+                          ? null
+                          : employee.employeeID
+                      );
+                    }}
+                    className="text-gray-600 hover:text-gray-800 flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition duration-200"
+                  >
+                    <i className="fa-solid fa-ellipsis-vertical text-lg"></i>
+                  </button>
+
+                  {employee.employeeID === isMenuOpen ? (
+                    <div className="absolute z-10 right-[100%] mt-2 w-36 top-[-50%]  bg-white border border-gray-200 rounded shadow-lg">
+                      <button
+                        onClick={() => handleEdit(employee)}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => setSelectedEmployee(employee)}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                      >
+                        View Details
+                      </button>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </td>
             </tr>
           ))}

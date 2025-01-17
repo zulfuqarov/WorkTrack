@@ -41,6 +41,7 @@ const AddEmployee = ({ toggleAddEmployee, showAddEmployee }) => {
     emiratesIDExpiry: "",
     salaryPaymentMode: "",
     bankAccountDetails: "",
+    status: "",
   });
 
   const handleChange = (e) => {
@@ -94,6 +95,52 @@ const AddEmployee = ({ toggleAddEmployee, showAddEmployee }) => {
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
+              ) : key === "status" ? (
+                <div key={key}>
+                  <label
+                    className="block text-sm font-medium text-gray-700"
+                    htmlFor={key}
+                  >
+                    Status
+                  </label>
+                  <select
+                    name={key}
+                    id={key}
+                    value={employeeData[key] || ""}
+                    onChange={handleChange}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  >
+                    <option value="" disabled>
+                      Select Status
+                    </option>
+                    <option value="Active">Active</option>
+                    <option value="Resigned">Resigned</option>
+                    <option value="Terminated">Terminated</option>
+                  </select>
+                </div>
+              ) : key === "category" ? (
+                <div key={key}>
+                  <label
+                    className="block text-sm font-medium text-gray-700"
+                    htmlFor={key}
+                  >
+                    category
+                  </label>
+                  <select
+                    name={key}
+                    id={key}
+                    value={employeeData[key] || ""}
+                    onChange={handleChange}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  >
+                    <option value="" disabled>
+                      Select Category
+                    </option>
+                    <option value="Staff">Staff</option>
+                    <option value="Labor">Labor</option>
+                    <option value="Management">Management</option>
+                  </select>
+                </div>
               ) : (
                 <div key={key}>
                   <label
@@ -125,7 +172,7 @@ const AddEmployee = ({ toggleAddEmployee, showAddEmployee }) => {
           <div className="flex justify-end mt-4">
             <button
               onClick={toggleAddEmployee}
-              className="bg-indigo-600 mr-[10px] text-white px-4 py-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="bg-red-600 mr-[10px] text-white px-4 py-2 rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
             >
               Cancle
             </button>

@@ -5,7 +5,7 @@ const EmployeeDetails = ({ employee, setSelectedEmployee }) => {
     setSelectedEmployee(null);
   };
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-70 z-50 ">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-70 z-50 ">
       <div className="bg-white p-8 rounded-lg w-[90%] h-[95%] md:w-[70%] lg:w-[50%] shadow-2xl overflow-auto ">
         <div className="flex justify-between items-center mb-6 border-b border-gray-300 pb-4">
           <h2 className="text-2xl font-semibold text-gray-800">

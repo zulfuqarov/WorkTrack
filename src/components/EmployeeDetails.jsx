@@ -1,11 +1,17 @@
 import React from "react";
 
-const EmployeeDetails = ({ employee, setSelectedEmployee }) => {
+const EmployeeDetails = ({
+  employee,
+  setSelectedEmployee,
+  getStatusColor,
+  getCategoryColor,
+}) => {
   const onClose = () => {
     setSelectedEmployee(null);
   };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-70 z-50 ">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-70  ">
       <div className="bg-white p-8 rounded-lg w-[90%] h-[95%] md:w-[70%] lg:w-[50%] shadow-2xl overflow-auto ">
         <div className="flex justify-between items-center mb-6 border-b border-gray-300 pb-4">
           <h2 className="text-2xl font-semibold text-gray-800">
@@ -84,7 +90,7 @@ const EmployeeDetails = ({ employee, setSelectedEmployee }) => {
                 <strong>Joining Date:</strong> {employee.joiningDate}
               </div>
               <div>
-                <strong>Category:</strong> {employee.category}
+                <strong>Category:</strong> <span className={`${getCategoryColor(employee.category)} px-[5px] py-[3px]`}>{employee.category}</span>
               </div>
               <div>
                 <strong>Basic Salary:</strong> ${employee.basicSalary}
@@ -134,7 +140,14 @@ const EmployeeDetails = ({ employee, setSelectedEmployee }) => {
 
         <div className="mt-6 flex justify-between items-center border-t border-gray-300 pt-4">
           <p className="text-sm text-gray-500">
-            Status: <span className="text-red-500">{employee.status}</span>
+            Status:{" "}
+            <span
+              className={`${getStatusColor(
+                employee.status
+              )} px-[5px] py-[3px] rounded`}
+            >
+              {employee.status}
+            </span>
           </p>
           <button
             onClick={onClose}

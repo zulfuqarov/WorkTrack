@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { WorkContext } from "../context/ContextWork";
 
 const AddEmployee = ({ toggleAddEmployee, showAddEmployee }) => {
   const [employeeData, setEmployeeData] = useState({
@@ -44,6 +46,8 @@ const AddEmployee = ({ toggleAddEmployee, showAddEmployee }) => {
     status: "",
   });
 
+  const { filteredEmployees, setfilteredEmployees } = useContext(WorkContext);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEmployeeData({ ...employeeData, [name]: value });
@@ -51,7 +55,53 @@ const AddEmployee = ({ toggleAddEmployee, showAddEmployee }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(employeeData);
+    setfilteredEmployees([
+      ...filteredEmployees,
+      { id: uuidv4(), ...employeeData },
+    ]);
+    setEmployeeData({
+      employeeID: "",
+      photo: null,
+      name: "",
+      dob: "",
+      gender: "",
+      nationality: "",
+      mothersName: "",
+      homeCountryAddress: "",
+      homeCountryPhone: "",
+      emergencyContactName: "",
+      emergencyContactPhone: "",
+      email: "",
+      passportNo: "",
+      passportExpiryDate: "",
+      passportIssuingCountry: "",
+      companyName: "",
+      joiningDate: "",
+      category: "",
+      designation: "",
+      basicSalary: "",
+      accommodationAllowance: "",
+      travellingAllowance: "",
+      others: "",
+      currentGrossSalary: "",
+      eligibilityForOvertime: "",
+      ministryDesignation: "",
+      ministryBasicSalary: "",
+      ministryGrossSalary: "",
+      laborCardNo: "",
+      laborCardIssuanceDate: "",
+      laborCardExpiry: "",
+      visaNo: "",
+      visaIssuanceDate: "",
+      visaExpiry: "",
+      emiratesIDNo: "",
+      emiratesIDIssuanceDate: "",
+      emiratesIDExpiry: "",
+      salaryPaymentMode: "",
+      bankAccountDetails: "",
+      status: "",
+    });
+    toggleAddEmployee(false);
   };
 
   if (!showAddEmployee) {
@@ -86,12 +136,19 @@ const AddEmployee = ({ toggleAddEmployee, showAddEmployee }) => {
                     name={key}
                     id={key}
                     accept="image/*"
-                    onChange={(e) =>
-                      setEmployeeData({
-                        ...employeeData,
-                        photo: e.target.files[0],
-                      })
-                    }
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+                      if (!file) {
+                        return;
+                      }
+                      if (file) {
+                        const photoURL = URL.createObjectURL(file);
+                        setEmployeeData({
+                          ...employeeData,
+                          photo: photoURL,
+                        });
+                      }
+                    }}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>

@@ -4,6 +4,7 @@ export const WorkContext = createContext();
 const ContextWork = ({ children }) => {
   const [filteredEmployees, setfilteredEmployees] = useState([
     {
+      id: 1,
       employeeID: "EMP001",
       photo:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
@@ -47,6 +48,7 @@ const ContextWork = ({ children }) => {
       status: "Resigned",
     },
     {
+      id: 2,
       employeeID: "EMP002",
       photo:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
@@ -90,6 +92,7 @@ const ContextWork = ({ children }) => {
       status: "Resigned",
     },
     {
+      id: 3,
       employeeID: "EMP003",
       photo:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
@@ -133,6 +136,7 @@ const ContextWork = ({ children }) => {
       status: "Terminates",
     },
     {
+      id: 4,
       employeeID: "EMP004",
       photo:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
@@ -180,6 +184,7 @@ const ContextWork = ({ children }) => {
     <WorkContext.Provider
       value={{
         filteredEmployees,
+        setfilteredEmployees,
       }}
     >
       {children}

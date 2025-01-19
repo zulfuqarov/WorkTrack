@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import EmployeeDetails from "./EmployeeDetails";
 import { WorkContext } from "../context/ContextWork";
+import EditEmploye from "./EditEmploye";
+import ChountHeader from "./CountHeader";
 
 const EmployeeList = () => {
   const [selectedEmployee, setSelectedEmployee] = useState(null);
@@ -61,8 +63,22 @@ const EmployeeList = () => {
     setfilterEployeData(filterData);
   };
 
+  const [showEditEmployee, setshowEditEmployee] = useState(false);
+  const [editData, seteditData] = useState();
+  const handleEdit = (eploye) => {
+    setshowEditEmployee(true);
+    seteditData(eploye);
+  };
+  const toggleEditEmployee = () => {
+    setshowEditEmployee(false);
+  };
+
   return (
     <div className="overflow-x-auto bg-gray-100 p-6 text-[14px] h-[100vh]">
+      <ChountHeader
+        data={filterEployeData.length ? filterEployeData : filteredEmployees}
+      />
+
       <table className="min-w-full bg-white border border-gray-200">
         <thead>
           <tr>
@@ -114,15 +130,21 @@ const EmployeeList = () => {
                           ...new Set(
                             filteredEmployees.map((employe) => employe[header])
                           ),
-                        ].map((uniqueValue, index) => (
-                          <button
-                            key={index}
-                            onClick={() => filterCategory(uniqueValue, header)}
-                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex flex-col w-full"
-                          >
-                            <li>{uniqueValue}</li>
-                          </button>
-                        ))}
+                        ].map((uniqueValue, index) =>
+                          uniqueValue !== "" ? (
+                            <button
+                              key={index}
+                              onClick={() =>
+                                filterCategory(uniqueValue, header)
+                              }
+                              className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex flex-col w-full"
+                            >
+                              <li>{uniqueValue}</li>
+                            </button>
+                          ) : (
+                            ""
+                          )
+                        )}
                       </ul>
                     </div>
                   )}
@@ -134,7 +156,7 @@ const EmployeeList = () => {
         <tbody>
           {filterEployeData.length > 0
             ? filterEployeData.map((employee) => (
-                <tr key={employee.employeeID} className="border-t">
+                <tr key={employee.id} className="border-t">
                   <td className="px-4 py-3">
                     <img
                       src={employee.photo}
@@ -178,9 +200,7 @@ const EmployeeList = () => {
                       <button
                         onClick={() => {
                           setisMenuOpen(
-                            isMenuOpen === employee.employeeID
-                              ? null
-                              : employee.employeeID
+                            isMenuOpen === employee.id ? null : employee.id
                           );
                           setOpenDropdown(null);
                         }}
@@ -189,7 +209,7 @@ const EmployeeList = () => {
                         <i className="fa-solid fa-ellipsis-vertical text-lg"></i>
                       </button>
 
-                      {employee.employeeID === isMenuOpen ? (
+                      {employee.id === isMenuOpen ? (
                         <div className="absolute z-10 right-[100%] mt-2 w-36 top-[-50%]  bg-white border border-gray-200 rounded shadow-lg">
                           <button
                             onClick={() => handleEdit(employee)}
@@ -212,7 +232,7 @@ const EmployeeList = () => {
                 </tr>
               ))
             : filteredEmployees.map((employee) => (
-                <tr key={employee.employeeID} className="border-t">
+                <tr key={employee.id} className="border-t">
                   <td className="px-4 py-3">
                     <img
                       src={employee.photo}
@@ -256,9 +276,7 @@ const EmployeeList = () => {
                       <button
                         onClick={() => {
                           setisMenuOpen(
-                            isMenuOpen === employee.employeeID
-                              ? null
-                              : employee.employeeID
+                            isMenuOpen === employee.id ? null : employee.id
                           );
                           setOpenDropdown(null);
                         }}
@@ -267,7 +285,7 @@ const EmployeeList = () => {
                         <i className="fa-solid fa-ellipsis-vertical text-lg"></i>
                       </button>
 
-                      {employee.employeeID === isMenuOpen ? (
+                      {employee.id === isMenuOpen ? (
                         <div className="absolute z-10 right-[100%] mt-2 w-36 top-[-50%]  bg-white border border-gray-200 rounded shadow-lg">
                           <button
                             onClick={() => handleEdit(employee)}
@@ -297,9 +315,18 @@ const EmployeeList = () => {
         <EmployeeDetails
           employee={selectedEmployee}
           getCategoryColor={getCategoryColor}
+          getStatusColor={getStatusColor}
           setSelectedEmployee={setSelectedEmployee}
         />
       )}
+      {/* Edit for employee  */}
+      <EditEmploye
+        showEditEmployee={showEditEmployee}
+        toggleEditEmployee={toggleEditEmployee}
+        editData={editData}
+        filterEployeData={filterEployeData}
+        setfilterEployeData={setfilterEployeData}
+      />
     </div>
   );
 };

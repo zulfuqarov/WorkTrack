@@ -74,7 +74,7 @@ const EmployeeList = () => {
   };
 
   return (
-    <div className="overflow-x-auto bg-gray-100 p-6 text-[14px] h-[100vh]">
+    <div className="overflow-x-auto  p-6 text-[14px] h-[100%]">
       <ChountHeader
         data={filterEployeData.length ? filterEployeData : filteredEmployees}
       />

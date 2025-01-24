@@ -1,0 +1,727 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "My API",
+    "description": "Automatically generated Swagger documentation",
+    "version": "1.0.0"
+  },
+  "host": "localhost:7777",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/auth/logout": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/auth/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/workTrack/newEmploye": {
+      "post": {
+        "tags": [
+          "WorkTrack"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "employeeID",
+            "in": "formData",
+            "description": "Employee ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "photo",
+            "in": "formData",
+            "description": "Employee photo",
+            "type": "file"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Employee name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dob",
+            "in": "formData",
+            "description": "Employee date of birth",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "in": "formData",
+            "description": "Employee gender",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "nationality",
+            "in": "formData",
+            "description": "Employee nationality",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mothersName",
+            "in": "formData",
+            "description": "Employee mother's name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "homeCountryAddress",
+            "in": "formData",
+            "description": "Employee home country address",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "homeCountryPhone",
+            "in": "formData",
+            "description": "Employee home country phone number",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "emergencyContactName",
+            "in": "formData",
+            "description": "Emergency contact name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "emergencyContactPhone",
+            "in": "formData",
+            "description": "Emergency contact phone number",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Employee email address",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "passportNo",
+            "in": "formData",
+            "description": "Employee passport number",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "passportExpiryDate",
+            "in": "formData",
+            "description": "Employee passport expiry date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "passportIssuingCountry",
+            "in": "formData",
+            "description": "Employee passport issuing country",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "companyName",
+            "in": "formData",
+            "description": "Employee company name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "joiningDate",
+            "in": "formData",
+            "description": "Employee joining date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "in": "formData",
+            "description": "Employee category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "designation",
+            "in": "formData",
+            "description": "Employee designation",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "basicSalary",
+            "in": "formData",
+            "description": "Employee basic salary",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "accommodationAllowance",
+            "in": "formData",
+            "description": "Accommodation allowance for employee",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "travellingAllowance",
+            "in": "formData",
+            "description": "Travelling allowance for employee",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "others",
+            "in": "formData",
+            "description": "Other allowances for employee",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "currentGrossSalary",
+            "in": "formData",
+            "description": "Employee current gross salary",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "eligibilityForOvertime",
+            "in": "formData",
+            "description": "Employee eligibility for overtime",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "ministryDesignation",
+            "in": "formData",
+            "description": "Employee ministry designation",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "ministryBasicSalary",
+            "in": "formData",
+            "description": "Employee ministry basic salary",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "ministryGrossSalary",
+            "in": "formData",
+            "description": "Employee ministry gross salary",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "laborCardNo",
+            "in": "formData",
+            "description": "Employee labor card number",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "laborCardIssuanceDate",
+            "in": "formData",
+            "description": "Employee labor card issuance date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "laborCardExpiry",
+            "in": "formData",
+            "description": "Employee labor card expiry date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "visaNo",
+            "in": "formData",
+            "description": "Employee visa number",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "visaIssuanceDate",
+            "in": "formData",
+            "description": "Employee visa issuance date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "visaExpiry",
+            "in": "formData",
+            "description": "Employee visa expiry date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "emiratesIDNo",
+            "in": "formData",
+            "description": "Employee emirates ID number",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "emiratesIDIssuanceDate",
+            "in": "formData",
+            "description": "Employee emirates ID issuance date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "emiratesIDExpiry",
+            "in": "formData",
+            "description": "Employee emirates ID expiry date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "salaryPaymentMode",
+            "in": "formData",
+            "description": "Employee salary payment mode",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "bankAccountDetails",
+            "in": "formData",
+            "description": "Employee bank account details",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "description": "Employee status",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/workTrack/editEmploye/{id}": {
+      "put": {
+        "tags": [
+          "WorkTrack"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "employeeID",
+            "in": "formData",
+            "description": "Employee ID",
+            "type": "string"
+          },
+          {
+            "name": "photo",
+            "in": "formData",
+            "description": "Employee photo",
+            "type": "file"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Employee name",
+            "type": "string"
+          },
+          {
+            "name": "dob",
+            "in": "formData",
+            "description": "Employee date of birth",
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "in": "formData",
+            "description": "Employee gender",
+            "type": "string"
+          },
+          {
+            "name": "nationality",
+            "in": "formData",
+            "description": "Employee nationality",
+            "type": "string"
+          },
+          {
+            "name": "mothersName",
+            "in": "formData",
+            "description": "Employee mother's name",
+            "type": "string"
+          },
+          {
+            "name": "homeCountryAddress",
+            "in": "formData",
+            "description": "Employee home country address",
+            "type": "number"
+          },
+          {
+            "name": "homeCountryPhone",
+            "in": "formData",
+            "description": "Employee home country phone number",
+            "type": "string"
+          },
+          {
+            "name": "emergencyContactName",
+            "in": "formData",
+            "description": "Emergency contact name",
+            "type": "string"
+          },
+          {
+            "name": "emergencyContactPhone",
+            "in": "formData",
+            "description": "Emergency contact phone number",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Employee email address",
+            "type": "string"
+          },
+          {
+            "name": "passportNo",
+            "in": "formData",
+            "description": "Employee passport number",
+            "type": "string"
+          },
+          {
+            "name": "passportExpiryDate",
+            "in": "formData",
+            "description": "Employee passport expiry date",
+            "type": "string"
+          },
+          {
+            "name": "passportIssuingCountry",
+            "in": "formData",
+            "description": "Employee passport issuing country",
+            "type": "string"
+          },
+          {
+            "name": "companyName",
+            "in": "formData",
+            "description": "Employee company name",
+            "type": "string"
+          },
+          {
+            "name": "joiningDate",
+            "in": "formData",
+            "description": "Employee joining date",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "in": "formData",
+            "description": "Employee category",
+            "type": "string"
+          },
+          {
+            "name": "designation",
+            "in": "formData",
+            "description": "Employee designation",
+            "type": "string"
+          },
+          {
+            "name": "basicSalary",
+            "in": "formData",
+            "description": "Employee basic salary",
+            "type": "number"
+          },
+          {
+            "name": "accommodationAllowance",
+            "in": "formData",
+            "description": "Accommodation allowance for employee",
+            "type": "number"
+          },
+          {
+            "name": "travellingAllowance",
+            "in": "formData",
+            "description": "Travelling allowance for employee",
+            "type": "number"
+          },
+          {
+            "name": "others",
+            "in": "formData",
+            "description": "Other allowances for employee",
+            "type": "number"
+          },
+          {
+            "name": "currentGrossSalary",
+            "in": "formData",
+            "description": "Employee current gross salary",
+            "type": "number"
+          },
+          {
+            "name": "eligibilityForOvertime",
+            "in": "formData",
+            "description": "Employee eligibility for overtime",
+            "type": "string"
+          },
+          {
+            "name": "ministryDesignation",
+            "in": "formData",
+            "description": "Employee ministry designation",
+            "type": "string"
+          },
+          {
+            "name": "ministryBasicSalary",
+            "in": "formData",
+            "description": "Employee ministry basic salary",
+            "type": "number"
+          },
+          {
+            "name": "ministryGrossSalary",
+            "in": "formData",
+            "description": "Employee ministry gross salary",
+            "type": "number"
+          },
+          {
+            "name": "laborCardNo",
+            "in": "formData",
+            "description": "Employee labor card number",
+            "type": "string"
+          },
+          {
+            "name": "laborCardIssuanceDate",
+            "in": "formData",
+            "description": "Employee labor card issuance date",
+            "type": "string"
+          },
+          {
+            "name": "laborCardExpiry",
+            "in": "formData",
+            "description": "Employee labor card expiry date",
+            "type": "string"
+          },
+          {
+            "name": "visaNo",
+            "in": "formData",
+            "description": "Employee visa number",
+            "type": "string"
+          },
+          {
+            "name": "visaIssuanceDate",
+            "in": "formData",
+            "description": "Employee visa issuance date",
+            "type": "string"
+          },
+          {
+            "name": "visaExpiry",
+            "in": "formData",
+            "description": "Employee visa expiry date",
+            "type": "string"
+          },
+          {
+            "name": "emiratesIDNo",
+            "in": "formData",
+            "description": "Employee emirates ID number",
+            "type": "string"
+          },
+          {
+            "name": "emiratesIDIssuanceDate",
+            "in": "formData",
+            "description": "Employee emirates ID issuance date",
+            "type": "string"
+          },
+          {
+            "name": "emiratesIDExpiry",
+            "in": "formData",
+            "description": "Employee emirates ID expiry date",
+            "type": "string"
+          },
+          {
+            "name": "salaryPaymentMode",
+            "in": "formData",
+            "description": "Employee salary payment mode",
+            "type": "string"
+          },
+          {
+            "name": "bankAccountDetails",
+            "in": "formData",
+            "description": "Employee bank account details",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "description": "Employee status",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/workTrack/deleteEmployee/{id}": {
+      "delete": {
+        "tags": [
+          "WorkTrack"
+        ],
+        "description": "Delete an employee record and associated photo if exists.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}

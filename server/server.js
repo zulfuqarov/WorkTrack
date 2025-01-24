@@ -22,7 +22,6 @@ const corsOptions = {
     credentials: true,
 };
 
-
 // Middleware'ler
 app.use(fileUpload({ useTempFiles: true }));
 app.use(express.json());
